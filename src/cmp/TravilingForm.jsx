@@ -69,7 +69,7 @@ export default function TravilingForm() {
 
     return (
         <>
-            <div className="title">TravilingForm</div>
+            <div className="title">Start your travel</div>
             <form action="" className="form" onSubmit={onSubmitForm}>
                 <label htmlFor="country"> country:</label>
 
