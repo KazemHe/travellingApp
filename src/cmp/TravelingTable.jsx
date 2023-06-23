@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadTravels, removeTravel, setFilterBy } from '../store/actions/travel.actions';
-import { TravelList } from '../cmp/TravelList';
-import '../style/TravilingTable.css';
+import { TravelList } from './TravelList';
+import '../style/TravelingTable.css';
 
-export default function TravilingTable(props) {
+export default function TravelingTable(props) {
   const travels = useSelector((storeState) => storeState.travelModule.travels);
   const filterBy = useSelector((storeState) => storeState.travelModule.filterBy);
   const dispatch = useDispatch();

@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { travelService } from '../services/travel.service';
 import AsyncSelect from 'react-select/async';
 import { navigate, useNavigate } from 'react-router-dom';
-import '../style/TravilingForm.css';
+import '../style/TravelingForm.css';
 
 
 
 
 
 
-export default function TravilingForm() {
+export default function TravelingForm() {
     const [formValues, setFormValues] = useState({
         country: '',
         start: '',

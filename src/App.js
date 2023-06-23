@@ -2,8 +2,8 @@ import logo from './logo.svg';
 import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 
 import './App.css';
-import TravilingForm from './cmp/TravilingForm';
-import TravilingTable from './cmp/TravilingTable';
+import TravelingForm from './cmp/TravelingForm';
+import TravelingTable from './cmp/TravelingTable';
 import { AppHeader } from './cmp/AppHeader'
 function App() {
   return (
@@ -18,8 +18,8 @@ function App() {
 
       <main className="container">
         <Routes>
-          <Route path="/table" element={<TravilingTable />} />
-          <Route path="/" element={<TravilingForm />} />
+          <Route path="/table" element={<TravelingTable />} />
+          <Route path="/" element={<TravelingForm />} />
         </Routes>
 
 
