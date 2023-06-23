@@ -1,0 +1,29 @@
+.travel-list {
+    width: 100%;
+  }
+  
+  .travel-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .travel-list th,
+  .travel-list td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .travel-list th {
+    font-weight: bold;
+  }
+  
+  .travel-list button {
+    padding: 4px 8px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  

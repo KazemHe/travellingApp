@@ -6,6 +6,8 @@ import axios from 'axios';
 import AsyncSelect from 'react-select/async';
 import { navigate, useNavigate } from 'react-router-dom';
 import { MdFlag } from 'react-icons/md';
+import '../style/TravilingForm.css';
+
 
 
 
@@ -16,7 +18,8 @@ export default function TravilingForm() {
         country: '',
         start: '',
         end: '',
-        note: ''
+        note: '',
+        flag: ''
     });
 
     const [countryOptions, setCountryOptions] = useState([]);
@@ -85,7 +88,7 @@ export default function TravilingForm() {
 
     return (
         <>
-            <div>TravilingForm</div>
+            <div className="title">TravilingForm</div>
             <form action="" className="form" onSubmit={onSubmitForm}>
                 <label htmlFor="country"> country:</label>
 
