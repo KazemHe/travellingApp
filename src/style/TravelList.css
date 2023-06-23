@@ -16,6 +16,7 @@
   
   .travel-list th {
     font-weight: bold;
+    cursor: pointer; /* Added cursor pointer */
   }
   
   .travel-list button {

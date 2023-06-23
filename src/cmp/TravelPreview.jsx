@@ -4,6 +4,9 @@ import '../style/TravelPreview.css';
 export function TravelPreview({ travel, onRemoveTravel }) {
   return (
     <tr className="travel-preview">
+      <td>
+        <img src={travel.flag} alt="Flag" className="flag-image"/>
+      </td>
       <td>{travel.country}</td>
       <td>{travel.start}</td>
       <td>{travel.end}</td>

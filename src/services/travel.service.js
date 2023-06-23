@@ -1,5 +1,5 @@
 import { storageService } from './storage.service'
-
+import axios from 'axios'
 
 
 
@@ -8,7 +8,8 @@ export const travelService = {
     getTravelById,
     deleteTravel,
     savetravel,
-    getEmptytravel
+    getEmptytravel,
+    fetchCountryOptions
 
 }
 
@@ -61,31 +62,32 @@ function deleteTravel(id) {
   }
   
 
-function _updatetravel(travel) {
+  function _updatetravel(travel) {
     return new Promise((resolve, reject) => {
-        const index = travels.findIndex(c => travel._id === c._id)
-        if (index !== -1) {
-            travels[index] = travel
-        }
-        resolve(travel)
-    })
-}
-
-function _addtravel(travel) {
-  return new Promise((resolve, reject) => {
-    travel._id = _makeId(); // Generate a unique ID for the travel
-    travels.push(travel); // Add the travel to the array
-
-    storageService.store('travel', travels); // Save the updated array to local storage
-
-    resolve(travel);
-  });
-}
-
+      const index = travels.findIndex((c) => travel._id === c._id);
+      if (index !== -1) {
+        travels[index] = travel;
+      }
+      resolve(travel);
+    });
+  }
+  
+  function _addtravel(travel) {
+    return new Promise((resolve, reject) => {
+      travel._id = _makeId(); // Generate a unique ID for the travel
+      travels.push(travel); // Add the travel to the array
+  
+      storageService.store('travel', travels); // Save the updated array to local storage
+  
+      resolve(travel);
+    });
+  }
+  
 
 function savetravel(travel) {
-    return travel._id ? _updatetravel(travel) : _addtravel(travel)
-}
+    return travel._id ? _updatetravel(travel) : _addtravel(travel);
+  }
+  
 
 function getEmptytravel() {
     return {
@@ -94,17 +96,19 @@ function getEmptytravel() {
         start: '',
         end: '',
         note: '',
+        flag:''
     }
 }
 
 function filter(term) {
-    term = term.toLocaleLowerCase()
-    return travels.filter(travel => {
-        return travels.country.toLocaleLowerCase().includes(term)
-        // travel.phone.toLocaleLowerCase().includes(term) ||
-        // travel.email.toLocaleLowerCase().includes(term)
-    })
+  term = term.toLocaleLowerCase();
+  return travels.filter((travel) => {
+    return travel.country.toLocaleLowerCase().includes(term);
+    // travel.phone.toLocaleLowerCase().includes(term) ||
+    // travel.email.toLocaleLowerCase().includes(term)
+  });
 }
+
 
 
 
@@ -116,3 +120,25 @@ function _makeId(length = 5) {
     }
     return txt
 }
+
+
+async function fetchCountryOptions(inputValue) {
+    try {
+      const response = await axios.get(
+        `https://restcountries.com/v3.1/name/${inputValue}?fields=name,flags`
+      );
+  
+      const options = response.data.map((country) => ({
+        value: country.name.common,
+        label: country.name.common,
+        flag: country.flags.svg,
+      }));
+  
+      return options;
+    } catch (error) {
+      console.error('Error fetching country options:', error);
+      return [];
+    }
+  }
+  
+  
